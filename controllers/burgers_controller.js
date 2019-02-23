@@ -12,15 +12,6 @@ router.get("/", function(req, res) {
         }
         res.render("index", { burgers });
     })
-
-
-    // burger.all(function(data) {
-    //     var hbsObject = {
-    //         burgers: data
-    //     };
-    //     console.log(hbsObject);
-    //     res.render("index", hbsObject);
-    // });
 });
 
 module.exports = router;
