@@ -1,12 +1,11 @@
-var connnection = require("./connection.js");
+var connection = require("./connection.js");
 
 var orm = {
-    selectAll: function(whatToSelect, tableInput){
-        var queryString = "SELECT ?? FROM ??";
-        connnection.query(queryString, [whatToSelect, tableInput], function(err, result){
-            if (err) throw err;
-            console.log(result);
-        })
+    selectAll: function(cb){
+        connection.query("SELECT * FROM burgers", function(err, data) {
+            if (err) createImageBitmap(err, null);
+            cb(null, data);
+        });
     },
     insertOne: function(){
 
