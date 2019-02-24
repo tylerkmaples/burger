@@ -19,7 +19,7 @@
 
                     <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
                         <input type="hidden" name="devoured" value="true">
-                        <button type="submit">Devour It!</button>
+                        <button type="submit" class="btn btn-primary devour">Devour It!</button>
                     </form>
                 </li>
                 {{/unless}}
@@ -34,7 +34,7 @@
                 {{#if this.devoured}}
                 <li>
                     <form action="api/burgers/{{this.id}}?_method=DELETE" method="POST">
-                        <button type="submit">Delete the Burger</button>
+                        <button type="submit" class="btn brn-primary delete">Delete the Burger</button>
                     </form>
                 </li>
                 {{/if}}
@@ -43,5 +43,18 @@
         </div>
 
     </div>
-    {{!-- Need row to hold the input form --}}
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Add a Burger!</h2>
+            <form class="create-form" action="/api/burgers" method="POST">
+                <div class="form-group">
+                    <label for="burger">Burger Name:</label>
+                    <input type="text" class="form-control" id="burger" name="burger_name" placeholder="What kind of burger?">
+                    <input type="hidden" name="devoured" value="0">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Burger</button>
+            </form>
+            
+        </div>
+    </div>
 </div>
