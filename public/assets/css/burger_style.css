@@ -5,3 +5,7 @@
 #devBurger li {
     list-style-type: none;
 }
+
+body {
+    color: orange;
+}
