@@ -1,0 +1,15 @@
+<li>
+    {{this.burger_name}}
+
+    {{#if devoured}}
+        <form>
+            <input type="hidden" name="id" value="{{this.id}}">
+            <button type="submit" class="btn brn-primary delete" data-id="{{this.id}}">Delete the Burger</button>
+        </form>
+    {{else}}
+        <form>
+            <input type="hidden" name="devoured" value="true">
+            <button type="submit" class="btn btn-primary devour"data-id="{{this.id}}">Devour It!</button>
+        </form>
+    {{/if}}
+</li>
