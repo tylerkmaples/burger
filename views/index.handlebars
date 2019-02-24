@@ -17,9 +17,9 @@
                 <li>
                     {{this.burger_name}}
 
-                    <form action:"/api/burgers/{{this.id}}?_method=PUT" method="POST">
+                    <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
                         <input type="hidden" name="devoured" value="true">
-                        <button type="submit">Devoure It!</button>
+                        <button type="submit">Devour It!</button>
                     </form>
                 </li>
                 {{/unless}}

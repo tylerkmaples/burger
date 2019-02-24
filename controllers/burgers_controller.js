@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var burger = require("../models/burger.js");
 
-router.get("/", function(req, res){
+router.get("/", function(req, res) {
     burger.selectAll(function(data) {
         var bObj = { burgers: data};
         console.log(bObj);
