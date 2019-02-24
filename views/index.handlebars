@@ -8,15 +8,40 @@
     </div>
     {{!-- This will contain the dynamically created burgers --}}
     <div class="row">
+
         <div class="col-sm-6 text-center">
             <h3>Burgers To Eat</h3>
+            <ul>
+                {{#each burgers}}
+                {{#unless this.devoured}}
+                <li>
+                    {{this.burger_name}}
+
+                    <form action:"burgers/update{{this.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="devoured" value="true">
+                        <button type="submit">Devoure It!</button>
+                    </form>
+                </li>
+                {{/unless}}
+                {{/each}}
+            </ul>
         </div>
+
         <div class="col-sm-6 text-center">
             <h3>Devoured Burgers</h3>
+            <ul>
+                {{#each burgers}}
+                {{#if this.devoured}}
+                <li>
+                    <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+                        <button type="submit">Delete the Burger</button>
+                    </form>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
         </div>
+
     </div>
     {{!-- Need row to hold the input form --}}
 </div>
-{{#each burgers}}
-    <p>{{burger_name}}</p>
-{{/each}}
