@@ -11,7 +11,7 @@
 
         <div class="col-sm-6 text-center">
             <h3>Burgers To Eat</h3>
-            <ul>
+            <ul id="eatBurger">
                 {{#each burgers}}
                     {{#unless this.devoured}}
                         {{> burgers/up-del}}
@@ -22,7 +22,7 @@
 
         <div class="col-sm-6 text-center">
             <h3>Devoured Burgers</h3>
-            <ul>
+            <ul id="devBurger">
                 {{#each burgers}}
                     {{#if this.devoured}}
                         {{> burgers/up-del}}
