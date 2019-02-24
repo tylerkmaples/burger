@@ -1,4 +1,4 @@
-var connection = require("./connection.js");
+var connection = require("../config/connection.js");
 
 function printQuestionMarks(num) {
     var arr = [];
@@ -12,16 +12,17 @@ function printQuestionMarks(num) {
 function objToSql(ob) {
     // column1 = value, column2 = value2...
     var arr = []; 
-    for (var key in ob) {
-        if (ob.hasOwnProperty(key)) {
-            arr.push(key + "=" + ob[key]);
+
+    if (Object.hasOwnProperty.call(ob, key)) {
+        if (typeof value === "string" && value.indexOf(" ") >= 0) {
+            value = "'" + value + "'"
         }
+        arr.push(key + "=" + value);
     }
-    return arr.toString()
 };
 
 var orm = {
-    all: function (tableInput, cb) {
+    selectAll: function (tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, result){
             if (err) throw err;
@@ -29,7 +30,7 @@ var orm = {
         });
     },
 
-    create: function (table, cols, vals, cb) {
+    insertOne: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 
         queryString += queryString + ` (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)}) `;
@@ -42,7 +43,7 @@ var orm = {
         });
     },
 
-    update: function(table, objColVals, condition, cb) {
+    updateOne: function(table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 
         queryString += ` SET ${objToSql(objColVals)} WHERE ${condition} `;
@@ -55,7 +56,7 @@ var orm = {
         });
     },
 
-    delete: function (table, condition, cb) {
+    deleteOne: function (table, condition, cb) {
         var queryString = "DELETE FROM " + table;
         queryString += ` WHERE ${condition}`;
 

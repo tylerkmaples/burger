@@ -2,41 +2,42 @@ var express = require("express");
 var router = express.Router();
 var burger = require("../models/burger.js");
 
-router.get("/", function(req, res) {
-    res.redirect('/burger');
-});
-
-router.get("/burgers", function(req, res){
-    burger.all(function(error, data) {
-        if (error) {
-            return res.status(404)
-        }
-        var hbsObject = { burgers: data};
-        console.log(hbsObject);
-        res.render("index", hbsObject);
+router.get("/", function(req, res){
+    burger.selectAll(function(data) {
+        var bObj = { burgers: data};
+        console.log(bObj);
+        res.render("index", bObj);
     });
 });
 
-router.post("/burgers/create", function(req, res) {
-    burger.create(["id", "burger_name"], [req.body.id, req.body.name], function() {
+router.post("/api/burgers", function(req, res) {
+    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function() {
         res.redirect("/burgers");
     });
 });
 
-router.put("/burgers/update/:id", function (req, res) {
+router.put("/api/burgers/:id", function (req, res) {
     var condition = `id = ${req.params.id}`;
     console.log("condition", condition);
     
-    burger.update({ devoured: req.body.devoured }, condition, function() {
-        res.redirect("/burgers");
-    })
+    burger.updateOne({ devoured: req.body.devoured }, condition, function(res) {
+        if (res.changedRows == 0) {
+            return res.status(404).end();
+        } else{
+            res.status(200).end();
+        }
+    });
 });
 
-router.delete("/cats/delete/:id", function (req, res) {
+router.delete("/api/burgers/:id", function (req, res) {
     var condition = "id = " + req.params.id;
-    burger.delete(condition, function(){
-        res.redirect("/");
-    })
-})
+    burger.deleteOne(condition, function(res) {
+        if (res.affectedRows == 0) {
+            return res.status(404).end()
+        } else{
+            res.status(200).end();
+        }
+    });
+});
 
 module.exports = router;
