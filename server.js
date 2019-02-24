@@ -6,7 +6,7 @@ var app = express();
 
 // Serve static content for the app from the "public" directory
 // the application directory
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
 
 // Parse application body as JSON
