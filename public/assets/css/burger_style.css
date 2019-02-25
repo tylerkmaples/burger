@@ -1,11 +1,66 @@
 #eatBurger li {
     list-style-type: none;
+    font-size: 20px;
 }
 
 #devBurger li {
     list-style-type: none;
+    font-size: 20px;
+    padding: 10px;
 }
 
 body {
-    color: orange;
+    background-color: #85b2d6;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+}
+
+.titleRow {
+    padding-bottom: 50px;
+}
+
+.burgerRow {
+    padding-bottom: 50px;
+    
+}
+
+.delete {
+    color: #fff;
+    background-color: #dc7a0d;
+    border-color: #dc7a0d;
+}
+
+.devour {
+    color: #fff;
+    background-color: #dc7a0d;
+    border-color: #dc7a0d;
+}
+
+.devour:hover {
+    background-color: #dc7a0d;
+    border-color: #dc7a0d;
+    opacity: 0.7;
+}
+
+.subBtn {
+    color: #fff;
+    background-color: #dc7a0d;
+    border-color: #dc7a0d;
+}
+
+.subBtn:hover {
+    background-color: #dc7a0d;
+    border-color: #dc7a0d;
+    opacity: 0.7;
+}
+
+.subBtn:active {
+    color: #fff;
+    background-color: #dc7a0d;
+    border-color: #dc7a0d;
+}
+
+.delete:hover {
+    color: #fff;
+    opacity: 0.7
 }

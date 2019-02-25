@@ -1,16 +1,16 @@
 <div class="container">
     {{!-- This will contain the picture and the title --}}
-    <div class="row">
+    <div class="row titleRow">
         <div class="col-sm-12 text-center">
-            {{!-- <img src="../public/assets/img/burger1.jpg"> --}}
+            <img src="/assets/img/burger2.png" width="250px" height="200px">
             <h1>Eat Da Burger!</h1>
         </div>
     </div>
     {{!-- This will contain the dynamically created burgers --}}
-    <div class="row">
+    <div class="row burgerRow">
 
         <div class="col-sm-6 text-center">
-            <h3>Burgers To Eat</h3>
+            <h3 style="font-weight: bold">Burgers To Eat</h3>
             <ul id="eatBurger">
                 {{#each burgers}}
                     {{#unless this.devoured}}
@@ -21,7 +21,7 @@
         </div>
 
         <div class="col-sm-6 text-center">
-            <h3>Devoured Burgers</h3>
+            <h3 style="font-weight: bold">Devoured Burgers</h3>
             <ul id="devBurger">
                 {{#each burgers}}
                     {{#if this.devoured}}
@@ -41,7 +41,7 @@
                     <input type="text" class="form-control" id="burger" name="burger_name" placeholder="What kind of burger?">
                     <input type="hidden" name="devoured" value="0">
                 </div>
-                <button type="submit" class="btn btn-primary">Add Burger</button>
+                <button type="submit" class="btn btn-primary subBtn">Add Burger</button>
             </form>
             
         </div>
